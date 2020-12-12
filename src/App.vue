@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <CreatePost />
+    <h2>Quantity posts: {{postsCount}}</h2>
     <div class="post" v-for="post in allPosts" :key="post.id">
       <h2>{{post.title}}</h2>
       <p>{{post.body}}</p>
@@ -8,16 +10,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex'
+import CreatePost from './components/CreatePost'
 
 export default {
   name: 'App',
-  computed: {
-    ...mapGetters(['allPosts'])
+  computed: mapGetters(['allPosts', 'postsCount']),
+  components: {
+    CreatePost
   },
-  methods: {
-    ...mapActions(['fetchPosts'])
-  },
+  methods: mapActions(['fetchPosts']),
   async mounted() {
     this.fetchPosts()
   }
@@ -32,8 +34,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin: 0 auto;
+  width: 400px;
 }
-
 
 .post {
   margin: 0 auto;

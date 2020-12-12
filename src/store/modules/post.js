@@ -5,11 +5,14 @@ export default {
       const posts = await res.json()
 
       ctx.commit('updatePosts', posts)
-    }
+    },
   },
 	mutations: {
     updatePosts(state, posts) {
       state.posts = posts 
+    },
+    createPost(state, newPost) {
+      state.posts.unshift(newPost)
     }
   },
 	state: {
@@ -18,6 +21,9 @@ export default {
 	getters: {
     allPosts(state) {
       return state.posts
+    },
+    postsCount(state) {
+      return state.posts.length
     }
   }
 }
