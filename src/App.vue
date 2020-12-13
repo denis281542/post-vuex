@@ -2,7 +2,7 @@
   <div id="app">
     <CreatePost />
     <h2>Quantity posts: {{postsCount}}</h2>
-    <div class="post" v-for="post in allPosts" :key="post.id">
+    <div class="post" v-for="post in validPosts" :key="post.id">
       <h2>{{post.title}}</h2>
       <p>{{post.body}}</p>
     </div>
@@ -15,7 +15,7 @@ import CreatePost from './components/CreatePost'
 
 export default {
   name: 'App',
-  computed: mapGetters(['allPosts', 'postsCount']),
+  computed: mapGetters(['allPosts', 'postsCount', 'validPosts']),
   components: {
     CreatePost
   },
